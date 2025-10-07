@@ -15,32 +15,54 @@ const armarios = [
 
 // função para reserva do armário, incluindo as regras.
 function reservarArmario() {
-  
+
   // obter tipo de armário selecionado pelo usuário no html.
   let tipoSelecionado = document.getElementById("tipoArmario").value;
   
-  // na lista, filtrar apenas os armários que estão disponíveis e que são acessiveis ao usuário.
-  let armariosDisponiveis = armarios.filter(a => a.formato === tipoSelecionado && a.status === true && usuario.acessibilidade === a.acessivel);
+  // filtrar armários disponíveis e compatíveis com o usuário
+  let armariosDisponiveis = armarios.filter(a => 
+    a.formato === tipoSelecionado && 
+    a.status === true && 
+    usuario.acessibilidade === a.acessivel
+  );
   
-  // caso não exista armário disponível, retorna para o usuário mensagem.
+  // caso não exista armário disponível
   if (armariosDisponiveis.length === 0) {
-    document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! Nenhum armário disponível para o tipo selecionado.`;
+    document.getElementById("resultado").innerText = 
+      `Olá, ${usuario.nome}! Nenhum armário disponível para o tipo selecionado.`;
     return;
   }
   
-  // Caso exista armário(s) disponíveil, seguimos sorteando uma opção. 
+  // sorteia um armário disponível
   let armarioSorteado = armariosDisponiveis[Math.floor(Math.random() * armariosDisponiveis.length)];
   
-  // Depois localizamos o armário emprestado na lista de armarios e mudamos o status do armário.
-  let armarioEmprestado = armarios.find(armario => armario.id === armarioSorteado.id).status = false;
+  // atualiza o status do armário
+  let armarioEmprestado = armarios.find(a => a.id === armarioSorteado.id);
+  armarioEmprestado.status = false;
   
-  // Finalmente, mudamos a pendencia do usuário para verdadeira.
+  // define pendência do usuário
   usuario.pendencia = true;
-  
-  // Impmimimos uma mensagem de reserva para o usuário.
-  document.getElementById("resultado").innerText = `Olá, ${usuario.nome}! O armário ${armarioSorteado.id} foi reservado com sucesso!`;
+
+  // === 🔹 NOVAS FUNCIONALIDADES ===
+
+  // 1️⃣ Data e hora da reserva
+  let dataReserva = new Date();
+  armarioEmprestado.dataReserva = dataReserva;
+
+  // 2️⃣ Data e hora da entrega (24h depois)
+  let dataEntrega = new Date(dataReserva.getTime() + 24 * 60 * 60 * 1000);
+  armarioEmprestado.dataEntrega = dataEntrega;
+
+  // 3️⃣ Exibir a data e hora formatadas
+  let dataEntregaFormatada = dataEntrega.toLocaleString("pt-BR", {
+    dateStyle: "short",
+    timeStyle: "short"
+  });
+
+  document.getElementById("resultado").innerText = 
+    `Olá, ${usuario.nome}! O armário ${armarioEmprestado.id} foi reservado com sucesso!\n` +
+    `Data de entrega das chaves: ${dataEntregaFormatada}`;
 
   console.log(usuario);
   console.log(armarios);
-
 }
