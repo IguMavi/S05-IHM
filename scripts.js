@@ -332,5 +332,11 @@ class AulasComponent extends HTMLElement {
   }
 }
 
+function voltarHome() {
+  document.getElementById("tela_auxilios").style.display = "none";
+  document.getElementById("tela_principal").style.display = "block";
+}
+
+
 // Registrando o componente
 customElements.define("aulas-component", AulasComponent);
