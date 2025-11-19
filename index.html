@@ -14,10 +14,10 @@
 
 <body>
   <div id="menu_aba">
-    <div id="menu_bot" onclick="closeMenu(); temaInatel();">Tema Inatel</div>
-    <div id="menu_bot" onclick="closeMenu(); temaLim();">Tema Limão</div>
-    <div id="menu_bot" onclick="closeMenu(); temaDark();">Tema Dark</div>
-    <div id="menu_bot" onclick="closeMenu(); abrirAuxilios();">Meus Auxílios</div>
+    <div class="menu_bot" onclick="closeMenu(); temaInatel();">Tema Inatel</div>
+    <div class="menu_bot" onclick="closeMenu(); temaLim();">Tema Limão</div>
+    <div class="menu_bot" onclick="closeMenu(); temaDark();">Tema Dark</div>
+    <div class="menu_bot" onclick="closeMenu(); abrirAuxilios();">Meus Auxílios</div>
   </div>
 
   <header id="head">
@@ -25,49 +25,46 @@
       <span class="material-symbols-outlined icoG">menu</span>
     </div>
 
-    <div id="logo">
-      <!-- seu SVG aqui -->
-    </div>
+    <div id="logo"></div>
 
     <div id="perfil">
       <span class="material-symbols-outlined icoG">person</span>
     </div>
   </header>
 
-  <main>
-    <div id="mensagens">
-      <div id="user_name" class="font"><b>Olá Igor!</b></div>
+  <!-- TELA PRINCIPAL -->
+  <div id="tela_principal">
+    <main>
+      <div id="mensagens">
+        <div id="user_name" class="font"><b>Olá Igor!</b></div>
 
-      <div id="mns_box">
-        <div id="icon"><span class="material-symbols-outlined icoP">notifications_active</span></div>
-        <div id="mns" class="font">Você possui um armário reservado com entrega para hoje...</div>
+        <div id="mns_box">
+          <div id="icon"><span class="material-symbols-outlined icoP">notifications_active</span></div>
+          <div id="mns" class="font">Você possui um armário reservado com entrega para hoje...</div>
+        </div>
+
+        <div id="mns_box">
+          <div id="icon"><span class="material-symbols-outlined icoP">mail</span></div>
+          <div id="mns" class="font">Você possui uma pendência no financeiro...</div>
+        </div>
       </div>
 
-      <div id="mns_box">
-        <div id="icon"><span class="material-symbols-outlined icoP">mail</span></div>
-        <div id="mns" class="font">Você possui uma pendência no financeiro...</div>
-      </div>
-    </div>
+      <aulas-component id="componente"></aulas-component>
 
-    <aulas-component id="componente"></aulas-component>
-
-    <div class="carousel-container">
-      <div class="carousel">
-        <!-- Cards serão inseridos dinamicamente -->
+      <div class="carousel-container">
+        <div class="carousel"></div>
+        <button id="prevBtn">❮</button>
+        <button id="nextBtn">❯</button>
       </div>
-      <button id="prevBtn">❮</button>
-      <button id="nextBtn">❯</button>
-    </div>
-    <!-- NOVA TELA: AUXÍLIOS -->
-    <div id="tela_auxilios" style="display:none;">
-      <div class="container-card">
-        <h2 class="titulo_sessao">Meus Auxílios</h2>
-        <div id="lista_auxilios"></div>
-      </div>
-    </div>
-  </main>
+    </main>
+  </div>
 
-  <!-- Seu JavaScript -->
+  <!-- TELA AUXÍLIOS (fora do main!) -->
+  <div id="tela_auxilios" style="display:none; padding:20px;">
+    <h2 class="titulo_sessao">Meus Auxílios</h2>
+    <div id="lista_auxilios"></div>
+  </div>
+
   <script src="scripts.js"></script>
 </body>
 </html>
