@@ -353,11 +353,12 @@ const auxilios = [
 ];
 
 function abrirAuxilios() {
-  document.querySelector("main").style.display = "none"; // esconde tela principal
-  document.getElementById("tela_auxilios").style.display = "block"; // mostra auxílios
+  document.getElementById("tela_principal").style.display = "none"; 
+  document.getElementById("tela_auxilios").style.display = "block";
 
   carregarAuxilios();
 }
+
 
 function carregarAuxilios() {
   const lista = document.getElementById("lista_auxilios");
