@@ -294,3 +294,20 @@ button {
   font-weight: bold;
   color: var(--cor-click);
 }
+
+.btn_voltar {
+  background-color: var(--cor-click);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-size: 14px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.15);
+  transition: transform 0.1s ease;
+}
+
+.btn_voltar:active {
+  transform: scale(0.97);
+}
