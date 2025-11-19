@@ -331,6 +331,49 @@ class AulasComponent extends HTMLElement {
     `;
   }
 }
+const auxilios = [
+  {
+    nome: "Bolsa Mérito",
+    valorMensal: 450,
+    status: "Ativo",
+    proximaDataPagamento: "10/12/2025",
+    descricao: "Auxílio concedido com base no desempenho acadêmico."
+  },
+  {
+    nome: "Auxílio Alimentação",
+    valorMensal: 250,
+    status: "Pendente",
+    proximaDataPagamento: "Aguardando atualização",
+    descricao: "Auxílio para custeio de refeições no campus."
+  }
+];
+
+function abrirAuxilios() {
+  document.getElementById("menu_aba").style.display = "none"; // fecha menu
+  document.getElementById("tela_principal").style.display = "none";
+  document.getElementById("tela_auxilios").style.display = "block";
+  carregarAuxilios();
+}
+
+function carregarAuxilios() {
+  const lista = document.getElementById("lista_auxilios");
+  lista.innerHTML = "";
+
+  auxilios.forEach(a => {
+    const card = document.createElement("div");
+    card.className = "card_auxilio";
+
+    card.innerHTML = `
+      <h3>${a.nome}</h3>
+      <p><b>Valor Mensal:</b> R$ ${a.valorMensal}</p>
+      <p><b>Status:</b> ${a.status}</p>
+      <p><b>Próx. Pagamento:</b> ${a.proximaDataPagamento}</p>
+      <p>${a.descricao}</p>
+    `;
+
+    lista.appendChild(card);
+  });
+}
 
 function voltarHome() {
   document.getElementById("tela_auxilios").style.display = "none";
