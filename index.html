@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,8 @@
 </head>
 
 <body>
+
+  <!-- MENU LATERAL -->
   <div id="menu_aba">
     <div class="menu_bot" onclick="closeMenu(); temaInatel();">Tema Inatel</div>
     <div class="menu_bot" onclick="closeMenu(); temaLim();">Tema Limão</div>
@@ -20,6 +23,7 @@
     <div class="menu_bot" onclick="closeMenu(); abrirAuxilios();">Meus Auxílios</div>
   </div>
 
+  <!-- CABEÇALHO -->
   <header id="head">
     <div id="menu" onclick="openMenu()">
       <span class="material-symbols-outlined icoG">menu</span>
@@ -35,36 +39,54 @@
   <!-- TELA PRINCIPAL -->
   <div id="tela_principal">
     <main>
+
+      <!-- MENSAGENS -->
       <div id="mensagens">
         <div id="user_name" class="font"><b>Olá Igor!</b></div>
 
         <div id="mns_box">
-          <div id="icon"><span class="material-symbols-outlined icoP">notifications_active</span></div>
+          <div id="icon">
+            <span class="material-symbols-outlined icoP">notifications_active</span>
+          </div>
           <div id="mns" class="font">Você possui um armário reservado com entrega para hoje...</div>
         </div>
 
         <div id="mns_box">
-          <div id="icon"><span class="material-symbols-outlined icoP">mail</span></div>
+          <div id="icon">
+            <span class="material-symbols-outlined icoP">mail</span>
+          </div>
           <div id="mns" class="font">Você possui uma pendência no financeiro...</div>
         </div>
       </div>
 
+      <!-- COMPONENTE DE AULAS -->
       <aulas-component id="componente"></aulas-component>
 
+      <!-- CARROSSEL -->
       <div class="carousel-container">
         <div class="carousel"></div>
         <button id="prevBtn">❮</button>
         <button id="nextBtn">❯</button>
       </div>
+
     </main>
   </div>
 
-  <!-- TELA AUXÍLIOS (fora do main!) -->
+  <!-- TELA DE AUXÍLIOS -->
   <div id="tela_auxilios" style="display:none; padding:20px;">
+
     <h2 class="titulo_sessao">Meus Auxílios</h2>
+
+    <!-- BOTÃO VOLTAR -->
+    <button onclick="voltarHome()" class="btn_voltar">← Voltar</button>
+
+    <!-- LISTA DE AUXÍLIOS -->
     <div id="lista_auxilios"></div>
+
   </div>
 
+  <!-- SCRIPT -->
   <script src="scripts.js"></script>
 </body>
+
 </html>
