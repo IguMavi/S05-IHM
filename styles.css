@@ -22,11 +22,11 @@ body {
   height: 100%;
   background: var(--cor-back2);
   padding-top: 60px;
-  display: none;
+  display: flex;
   flex-direction: column;
   z-index: 1000;
-  transition: transform 0.3s ease;
   transform: translateX(-100%);
+  transition: transform 0.3s ease;
 }
 
 #menu_aba.show {
@@ -156,3 +156,9 @@ body {
 
 #prevBtn { left: 10px; }
 #nextBtn { right: 10px; }
+
+/* RESPONSIVIDADE */
+@media (max-width: 600px) {
+  #menu_aba { width: 180px; }
+  #head { padding: 0 10px; }
+}
