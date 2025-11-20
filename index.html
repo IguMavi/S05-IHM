@@ -1,18 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard App Inatel</title>
-
-  <!-- Fonte dos ícones -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
   <!-- MENU LATERAL -->
@@ -20,9 +14,7 @@
     <div class="menu_bot" onclick="closeMenu(); temaInatel();">Tema Inatel</div>
     <div class="menu_bot" onclick="closeMenu(); temaLim();">Tema Limão</div>
     <div class="menu_bot" onclick="closeMenu(); temaDark();">Tema Dark</div>
-    <div class="menu_bot" onclick="closeMenu(); abrirAuxilios();">
-      <span class="material-symbols-outlined">help</span> Auxílios
-    </div>
+    <div class="menu_bot" onclick="abrirAuxilios(); closeMenu();">Meus Auxílios</div>
   </div>
 
   <!-- CABEÇALHO -->
@@ -39,6 +31,7 @@
   <!-- TELA PRINCIPAL -->
   <div id="tela_principal">
     <main>
+
       <!-- MENSAGENS -->
       <div id="mensagens">
         <div id="user_name" class="font"><b>Olá Igor!</b></div>
@@ -67,21 +60,17 @@
         <button id="prevBtn">❮</button>
         <button id="nextBtn">❯</button>
       </div>
+
     </main>
   </div>
 
   <!-- TELA DE AUXÍLIOS -->
   <div id="tela_auxilios" style="display:none; padding:20px;">
     <h2 class="titulo_sessao">Meus Auxílios</h2>
-
-    <!-- BOTÃO VOLTAR -->
     <button onclick="voltarHome()" class="btn_voltar">← Voltar</button>
-
-    <!-- LISTA DE AUXÍLIOS -->
     <div id="lista_auxilios"></div>
   </div>
 
-  <!-- SCRIPT -->
   <script src="scripts.js"></script>
 </body>
 </html>
