@@ -214,3 +214,14 @@ body {
     min-height: calc(100vh - 60px);
   }
 }
+
+/* SOLUÇÃO ESPECÍFICA PARA O "Olá Igor" */
+#user_name {
+  margin-top: -20px; /* Puxa o elemento para cima */
+  padding-top: 10px;
+}
+
+/* AJUSTE DO ÍCONE DE PERFIL */
+#perfil {
+  transform: translateX(-15px); /* Move para a esquerda */
+}
