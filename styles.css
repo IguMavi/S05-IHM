@@ -83,11 +83,6 @@ body {
   padding-right: 20px;
   transition: margin-left 0.3s;
 }
-#tela_auxilios{
-  padding-top: 100px; /* espaço para o cabeçalho fixo */
-  padding-left: 20px;
-  padding-right: 20px;
-  transition: margin-left 0.3s;
 
 /* BOTÃO VOLTAR */
 .btn_voltar {
