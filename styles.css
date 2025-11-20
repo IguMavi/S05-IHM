@@ -72,9 +72,14 @@ body {
   color: white;
 }
 
-/* AJUSTE PARA CONTEÚDO */
-#tela_principal {
-  padding-top: 80px; /* espaço para o cabeçalho */
+#menu {
+  cursor: pointer; /* cursor de clique para o menu hamburguer */
+}
+
+/* AJUSTE PARA CONTEÚDO - PRINCIPAL E AUXÍLIOS */
+#tela_principal,
+#tela_auxilios {
+  padding-top: 80px; /* espaço para o cabeçalho fixo */
   padding-left: 20px;
   padding-right: 20px;
   transition: margin-left 0.3s;
@@ -99,13 +104,6 @@ body {
 }
 
 /* AUXÍLIOS */
-#tela_auxilios {
-  padding-top: 80px; /* espaço para o cabeçalho */
-  padding-left: 20px;
-  padding-right: 20px;
-  transition: margin-left 0.3s;
-}
-
 .card_auxilio {
   background: white;
   padding: 15px;
@@ -177,9 +175,6 @@ body {
 @media (max-width: 600px) {
   #menu_aba { width: 180px; }
   #head { padding: 0 10px; }
-  #tela_principal { padding-left: 10px; padding-right: 10px; }
-}
-
-#menu {
-  cursor: pointer; /* muda o cursor quando passar sobre o menu hamburguer */
+  #tela_principal,
+  #tela_auxilios { padding-left: 10px; padding-right: 10px; }
 }
