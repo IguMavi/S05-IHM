@@ -99,6 +99,13 @@ body {
 }
 
 /* AUXÍLIOS */
+#tela_auxilios {
+  padding-top: 80px; /* espaço para o cabeçalho */
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: margin-left 0.3s;
+}
+
 .card_auxilio {
   background: white;
   padding: 15px;
@@ -172,7 +179,6 @@ body {
   #head { padding: 0 10px; }
   #tela_principal { padding-left: 10px; padding-right: 10px; }
 }
-
 
 #menu {
   cursor: pointer; /* muda o cursor quando passar sobre o menu hamburguer */
