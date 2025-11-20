@@ -172,3 +172,8 @@ body {
   #head { padding: 0 10px; }
   #tela_principal { padding-left: 10px; padding-right: 10px; }
 }
+
+
+#menu {
+  cursor: pointer; /* muda o cursor quando passar sobre o menu hamburguer */
+}
