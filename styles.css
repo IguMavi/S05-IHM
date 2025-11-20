@@ -11,6 +11,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: var(--cor-back1);
+  /* SOLUÇÃO: Adicionar padding-top no body */
+  padding-top: 70px !important;
 }
 
 /* MENU LATERAL */
@@ -51,20 +53,20 @@ body {
   cursor: pointer;
 }
 
-/* CABEÇALHO */
+/* CABEÇALHO - Ajustado para ficar acima de tudo */
 #head {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 60px;
+  height: 70px; /* Aumentado para 70px */
   background: var(--cor-back2);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   box-shadow: 0px 2px 5px rgba(0,0,0,0.2);
-  z-index: 500;
+  z-index: 1500; /* Aumentado o z-index */
 }
 
 .icoG {
@@ -73,18 +75,28 @@ body {
 }
 
 #menu {
-  cursor: pointer; /* cursor de clique para o menu hamburguer */
+  cursor: pointer;
 }
 
-/* AJUSTE PARA CONTEÚDO - PRINCIPAL E AUXÍLIOS */
+/* CORREÇÃO PRINCIPAL - Conteúdo abaixo do cabeçalho */
 #tela_principal,
 #tela_auxilios {
-  padding-top: 80px; /* espaço para o cabeçalho fixo */
-  padding-left: 20px;
-  padding-right: 20px;
-  transition: margin-left 0.3s;
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 70px);
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* Removido o padding-top antigo e ajustado margin */
+#tela_principal {
+  margin-top: 0;
+}
+
+#tela_auxilios {
+  margin-top: 0;
+  display: none;
+}
 
 /* BOTÃO VOLTAR */
 .btn_voltar {
@@ -172,10 +184,33 @@ body {
 #prevBtn { left: 10px; }
 #nextBtn { right: 10px; }
 
+/* MENSAGENS - Ajuste para ficar abaixo do cabeçalho */
+#mensagens {
+  margin-top: 0;
+  padding: 0;
+}
+
+#mns_box {
+  background: white;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
 /* RESPONSIVIDADE */
 @media (max-width: 600px) {
   #menu_aba { width: 180px; }
-  #head { padding: 0 10px; }
+  #head { 
+    padding: 0 10px; 
+    height: 60px;
+  }
+  body {
+    padding-top: 60px !important;
+  }
   #tela_principal,
-  #tela_auxilios { padding-left: 10px; padding-right: 10px; }
+  #tela_auxilios { 
+    padding: 15px 10px;
+    min-height: calc(100vh - 60px);
+  }
 }
