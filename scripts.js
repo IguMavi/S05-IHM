@@ -1,43 +1,41 @@
+/* MENU LATERAL */
 function openMenu() {
-  document.getElementById("menu_aba").style.display = "block";
+  document.getElementById("menu_aba").classList.add("show");
 }
-
 function closeMenu() {
-  document.getElementById("menu_aba").style.display = "none";
+  document.getElementById("menu_aba").classList.remove("show");
 }
 
+/* TEMAS */
 function temaLim() {
-  document.documentElement.style.setProperty("--cor-click", "#38184C");
-  document.documentElement.style.setProperty("--cor-sombra", "#9b0a59");
-  document.documentElement.style.setProperty("--cor-text", "black");
-  document.documentElement.style.setProperty("--cor-back1", "#CEF09D");
-  document.documentElement.style.setProperty("--cor-back2", "#4f6a93");
-  document.documentElement.style.setProperty("--md-sys-color-primary", "#38184C");
+  const root = document.documentElement;
+  root.style.setProperty("--cor-click", "#38184C");
+  root.style.setProperty("--cor-sombra", "#9b0a59");
+  root.style.setProperty("--cor-text", "black");
+  root.style.setProperty("--cor-back1", "#CEF09D");
+  root.style.setProperty("--cor-back2", "#4f6a93");
+  root.style.setProperty("--md-sys-color-primary", "#38184C");
 }
-
 function temaInatel() {
-  document.documentElement.style.setProperty("--cor-click", "#126ae2");
-  document.documentElement.style.setProperty("--cor-sombra", "#0a599b");
-  document.documentElement.style.setProperty("--cor-text", "black");
-  document.documentElement.style.setProperty("--cor-back1", "#edf2f4");
-  document.documentElement.style.setProperty("--cor-back2", "#6a937a");
-  document.documentElement.style.setProperty("--md-sys-color-primary", "#126ae2");
+  const root = document.documentElement;
+  root.style.setProperty("--cor-click", "#126ae2");
+  root.style.setProperty("--cor-sombra", "#0a599b");
+  root.style.setProperty("--cor-text", "black");
+  root.style.setProperty("--cor-back1", "#edf2f4");
+  root.style.setProperty("--cor-back2", "#6a937a");
+  root.style.setProperty("--md-sys-color-primary", "#126ae2");
 }
-
 function temaDark() {
-  const cores = {
-    "--cor-click": "#CEF09D",
-    "--cor-sombra": "#9b0a59",
-    "--cor-text": "black",
-    "--cor-back1": "#38184C",
-    "--cor-back2": "#4f6a93",
-    "--md-sys-color-primary": "#CEF09D"
-  };
-  for (const [variavel, valor] of Object.entries(cores)) {
-    document.documentElement.style.setProperty(variavel, valor);
-  }
+  const root = document.documentElement;
+  root.style.setProperty("--cor-click", "#CEF09D");
+  root.style.setProperty("--cor-sombra", "#9b0a59");
+  root.style.setProperty("--cor-text", "black");
+  root.style.setProperty("--cor-back1", "#38184C");
+  root.style.setProperty("--cor-back2", "#4f6a93");
+  root.style.setProperty("--md-sys-color-primary", "#CEF09D");
 }
 
+/* CARROSSEL */
 const eventos = [
   {id:1,title:"Semana do Software 2025",date:"12/05",time:"10:00",location:"Salão de Eventos",type:"tech",description:"Uma semana inteira dedicada à tecnologia e inovação, com palestras, workshops e hackathons.",image:"https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800&h=400"},
   {id:2,title:"Workshop de IoT",date:"12/01",time:"08:00",location:"Laboratório CS&I",type:"tech",description:"Workshop prático sobre Internet das Coisas e suas aplicações na indústria 4.0.",image:"https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=400"},
@@ -46,9 +44,8 @@ const eventos = [
 ];
 
 const carousel = document.querySelector(".carousel");
-
 function createCards() {
-  eventos.forEach((event) => {
+  eventos.forEach(event => {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
@@ -61,26 +58,23 @@ function createCards() {
     carousel.appendChild(card);
   });
 }
-
 let index = 0;
 function nextCard() { index = (index + 1) % eventos.length; updateCarousel(); }
 function prevCard() { index = (index - 1 + eventos.length) % eventos.length; updateCarousel(); }
 function updateCarousel() { carousel.style.transform = `translateX(-${index * 100}%)`; }
-
 document.getElementById("nextBtn").addEventListener("click", nextCard);
 document.getElementById("prevBtn").addEventListener("click", prevCard);
 setInterval(nextCard, 5000);
-
 let startX;
-carousel.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; });
-carousel.addEventListener("touchend", (e) => {
+carousel.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+carousel.addEventListener("touchend", e => {
   let endX = e.changedTouches[0].clientX;
   if (startX - endX > 50) nextCard();
   if (endX - startX > 50) prevCard();
 });
-
 createCards();
 
+/* AULAS COMPONENTE */
 class AulasComponent extends HTMLElement {
   constructor() {
     super();
@@ -96,41 +90,37 @@ class AulasComponent extends HTMLElement {
   connectedCallback() { this.render(); }
 
   render() {
-    const aulasDia = this.aulas.filter((a) => a.data === this.hoje);
+    const aulasDia = this.aulas.filter(a => a.data === this.hoje);
     this.shadowRoot.innerHTML = `
       <style>
-      .comp-aula {background:white;padding:15px;margin:20px;border-radius:10px;box-shadow:0px 4px 8px rgba(0,0,0,0.1);}
-      .titulo_aula {font-family:Arimo;font-weight:bold;font-size:15px;color:var(--cor-text);}
-      p {font-family:Arimo;font-size:11px;color:var(--cor-text);}
-      .lables {display:flex;}
-      .lable-prova,.lable-frequencia,.lable-nota {background:var(--prova);padding:7px 15px;margin-right:10px;border-radius:500px;color:white;}
+        :host { font-family: Arial, sans-serif; }
+        .comp-aula {background:white;padding:15px;margin:20px;border-radius:10px;box-shadow:0px 4px 8px rgba(0,0,0,0.1);}
+        .titulo_aula {font-weight:bold;font-size:15px;color:var(--cor-text);}
+        p {font-size:11px;color:var(--cor-text);}
+        .lables {display:flex;}
+        .lable-prova,.lable-frequencia,.lable-nota {padding:7px 15px;margin-right:10px;border-radius:500px;color:white;}
       </style>
       <div>
-      ${aulasDia.map((a) => {
-        let nota = Number(a.nota);
-        let notaColor = nota < 6 ? "#e53e3e" : nota < 8 ? "#f59e0b" : "#16a34a";
-        return `
-        <div class="comp-aula">
-          <div class="lable-prova" style="${a.prova_alert ? "" : "display:none"}">PROVA: <b>${a.prova}</b></div>
-          <div class="titulo_aula">${a.disciplina}</div>
-          <p>Local e Horário: <b>${a.local} - ${a.horario}</b></p>
-          <div class="lables">
-            <div class="lable-frequencia">FALTAS: <b>${a.frequencia}</b></div>
-            <div class="lable-nota" style="background:${notaColor}">CR: <b>${nota}</b></div>
-          </div>
-        </div>`;
-      }).join("")}
+        ${aulasDia.map(a => {
+          let nota = Number(a.nota);
+          let notaColor = nota < 6 ? "#e53e3e" : nota < 8 ? "#f59e0b" : "#16a34a";
+          return `
+            <div class="comp-aula">
+              <div class="lable-prova" style="${a.prova_alert ? "" : "display:none"}; background:#126ae2;">PROVA: <b>${a.prova}</b></div>
+              <div class="titulo_aula">${a.disciplina}</div>
+              <p>Local e Horário: <b>${a.local} - ${a.horario}</b></p>
+              <div class="lables">
+                <div class="lable-frequencia" style="background:#0a599b;">FALTAS: <b>${a.frequencia}</b></div>
+                <div class="lable-nota" style="background:${notaColor}">CR: <b>${nota}</b></div>
+              </div>
+            </div>`;
+        }).join('')}
       </div>`;
   }
 }
-
 customElements.define("aulas-component", AulasComponent);
 
-function voltarHome() {
-  document.getElementById("tela_auxilios").style.display = "none";
-  document.getElementById("tela_principal").style.display = "block";
-}
-
+/* AUXÍLIOS */
 const auxilios = [
   {nome:"Bolsa Mérito",valorMensal:450,status:"Ativo",proximaDataPagamento:"10/12/2025",descricao:"Auxílio concedido com base no desempenho acadêmico."},
   {nome:"Auxílio Alimentação",valorMensal:250,status:"Pendente",proximaDataPagamento:"Aguardando atualização",descricao:"Auxílio para custeio de refeições no campus."}
@@ -140,6 +130,11 @@ function abrirAuxilios() {
   document.getElementById("tela_principal").style.display = "none";
   document.getElementById("tela_auxilios").style.display = "block";
   carregarAuxilios();
+}
+
+function voltarHome() {
+  document.getElementById("tela_auxilios").style.display = "none";
+  document.getElementById("tela_principal").style.display = "block";
 }
 
 function carregarAuxilios() {
