@@ -48,6 +48,7 @@ body {
   background: var(--cor-click);
   border-radius: 8px;
   transform: translateX(5px);
+  cursor: pointer;
 }
 
 /* CABEÇALHO */
